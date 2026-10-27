@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#121214">
+    <title>Assistente IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="chat-card" aria-label="Chat com o assistente">
+        <header class="chat-header">
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M12 3.5 14 9l5.5 2-5.5 2-2 5.5-2-5.5-5.5-2L10 9l2-5.5Z"></path>
+                        <path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"></path>
+                    </svg>
+                </div>
+                <div class="brand-copy">
+                    <h1>Assistente IA</h1>
+                    <p><span class="status-dot" aria-hidden="true"></span>Pronto para conversar</p>
+                </div>
+            </div>
+            <button class="icon-button clear-button" id="clear-chat" type="button" aria-label="Limpar histórico da conversa" title="Limpar conversa">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M4 7h16M10 11v6m4-6v6M6 7l1 14h10l1-14M9 7V4h6v3"></path>
+                </svg>
+                <span>Limpar</span>
+            </button>
+        </header>
+
+        <section class="conversation" id="conversation" aria-label="Conversa">
+            <div class="message-list" id="message-list" role="log" aria-live="polite" aria-relevant="additions text"></div>
+            <div class="empty-state" id="empty-state">
+                <div class="empty-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3.7-.9L4 19l.9-4.8A7.5 7.5 0 1 1 20 11.5Z"></path>
+                        <path d="M8.5 11.5h.01M12.5 11.5h.01M16.5 11.5h.01"></path>
+                    </svg>
+                </div>
+                <h2>Como posso ajudar?</h2>
+                <p>Envie uma mensagem ou anexe uma imagem para começar.</p>
+            </div>
+        </section>
+
+        <div class="status-area">
+            <p class="loading-status" id="loading-status" role="status" hidden>
+                <span class="spinner" aria-hidden="true"></span>
+                Gerando resposta…
+            </p>
+            <p class="error-status" id="error-status" role="alert" hidden></p>
+            <div class="image-preview" id="image-preview" hidden>
+                <img id="preview-image" alt="Pré-visualização da imagem anexada">
+                <span class="image-name" id="image-name"></span>
+                <button class="remove-image" id="remove-image" type="button" aria-label="Remover imagem anexada">×</button>
+            </div>
+        </div>
+
+        <form class="composer" id="chat-form">
+            <input id="image-input" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+            <button class="icon-button attach-button" id="attach-image" type="button" aria-label="Anexar uma imagem">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="m8 12.5 6.7-6.7a4 4 0 0 1 5.7 5.7l-8.5 8.5a6 6 0 0 1-8.5-8.5l8.5-8.5"></path>
+                </svg>
+            </button>
+            <label class="visually-hidden" for="message-input">Digite sua mensagem</label>
+            <textarea id="message-input" aria-label="Digite sua mensagem" placeholder="Escreva sua mensagem..." rows="1" maxlength="10000"></textarea>
+            <button class="send-button" id="send-button" type="submit" aria-label="Enviar mensagem">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M5 12h14M13 6l6 6-6 6"></path>
+                </svg>
+            </button>
+        </form>
+        <p class="composer-hint">Enter para enviar <span aria-hidden="true">·</span> Shift + Enter para nova linha</p>
+    </main>
+    <script src="/script.js" defer></script>
+</body>
+</html>
